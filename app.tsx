@@ -1,7 +1,11 @@
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
+import React, { useState } from "react";
 
 function App() {
-  return <h1>Hello world!</h1>;
+  const [count, setCount] = useState(0);
+  return <button onClick={() => setCount((prev) => prev + 1)}>{count}</button>;
 }
 
-ReactDOM.render(<App />, document.querySelector("#root"));
+const container = document.getElementById("root");
+const root = createRoot(container!); // createRoot(container!) if you use TypeScript
+root.render(<App />);
